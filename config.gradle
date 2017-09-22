@@ -21,7 +21,7 @@ ext {
             gson        : "2.8.0",
             rxjava2     : "2.1.0",
             rxandroid   : "2.0.1",
-            utilcode    : "1.8.1",
+            utilcode    : "1.9.0",
             logger      : "1.15",
             fragmentation   : "1.1.3",
     ]
