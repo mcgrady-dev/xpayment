@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">XPay</string>
+
+    <string name="confirm">确定</string>
+    <string name="error_missing_h5_pay_url">必须配置需要打开的url 站点，请在PayDemoActivity类的h5Pay中配置</string>
+    <string name="error">错误</string>
+</resources>
