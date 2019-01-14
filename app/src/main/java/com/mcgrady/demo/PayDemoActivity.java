@@ -1,4 +1,4 @@
-package com.mcgrady.xpay;
+package com.mcgrady.demo;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.alipay.sdk.app.PayTask;
+import com.mcgrady.xpay.PayAPI;
 import com.mcgrady.xpay.alipay.AliPayReq;
 import com.mcgrady.xpay.interf.PayResultCallBack;
 import com.mcgrady.xpay.wxpay.WechatPayReq;
@@ -22,9 +22,14 @@ public class PayDemoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_demo);
+
+        testPay();
+    }
+
+    private void testPay() {
         requestPermission(() -> {
             AliPayReq aliPayReq = new AliPayReq.Builder()
-                    .with(new PayTask(PayDemoActivity.this))
+                    .with(PayDemoActivity.this)
                     .payResultCallBack(new PayResultCallBack() {
                         @Override
                         public void onPaySuccess(String result) {

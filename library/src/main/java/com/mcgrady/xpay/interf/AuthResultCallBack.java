@@ -1,7 +1,7 @@
 package com.mcgrady.xpay.interf;
 
 /**
- * <p>类说明</p>
+ * <p>授权结果回调</p>
  *
  * @author: mcgrady
  * @date: 2019/1/11

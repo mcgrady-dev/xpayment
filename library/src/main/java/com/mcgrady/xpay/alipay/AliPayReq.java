@@ -1,6 +1,7 @@
 package com.mcgrady.xpay.alipay;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -34,7 +35,7 @@ public class AliPayReq extends PayReqAble {
 
     private AliPayReq(Builder builder) {
         payResultCallBack = builder.payResultCallBack;
-        payTask = builder.payTask;
+        payTask = new PayTask(builder.activity);
         params = builder.params;
         paramsModel = builder.paramsModel;
     }
@@ -111,7 +112,7 @@ public class AliPayReq extends PayReqAble {
 
     public static final class Builder {
         private PayResultCallBack payResultCallBack;
-        private PayTask payTask;
+        private Activity activity;
         private String params;
         private AliPayParam paramsModel;
 
@@ -123,8 +124,8 @@ public class AliPayReq extends PayReqAble {
             return this;
         }
 
-        public Builder with(PayTask val) {
-            payTask = val;
+        public Builder with(Activity val) {
+            activity = val;
             return this;
         }
 
