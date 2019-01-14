@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--微信支付回调-->
+        <activity
+            android:name="com.mcgrady.xpay.wxpay.wxapi.WXPayEnterActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
     </application>
 
 </manifest>

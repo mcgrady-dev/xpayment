@@ -18,7 +18,7 @@ import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
  * @date: 2019/1/9
  */
 
-public class WechatPayReq extends PayReqAble {
+public class WeChatPayReq extends PayReqAble {
 
     //微信支付AppID
     private String appId;
@@ -35,9 +35,9 @@ public class WechatPayReq extends PayReqAble {
     private String sign;
 
     //微信支付核心api
-    IWXAPI wxApi;
+    private IWXAPI wxApi;
 
-    private WechatPayReq(Builder builder) {
+    private WeChatPayReq(Builder builder) {
         this();
         wxApi = builder.wxApi;
         payResultCallBack = builder.payListener;
@@ -50,7 +50,7 @@ public class WechatPayReq extends PayReqAble {
         sign = builder.sign;
     }
 
-    private WechatPayReq() {
+    private WeChatPayReq() {
         if (wxApi != null && !TextUtils.isEmpty(appId)) {
             wxApi.registerApp(appId);
         }
@@ -152,8 +152,8 @@ public class WechatPayReq extends PayReqAble {
             return this;
         }
 
-        public WechatPayReq create() {
-            return new WechatPayReq(this);
+        public WeChatPayReq create() {
+            return new WeChatPayReq(this);
         }
     }
 }

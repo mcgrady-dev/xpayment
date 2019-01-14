@@ -1,4 +1,4 @@
-package com.mcgrady.xpay.alipay;
+package com.mcgrady.demo;
 
 import android.app.Activity;
 import android.app.AlertDialog;

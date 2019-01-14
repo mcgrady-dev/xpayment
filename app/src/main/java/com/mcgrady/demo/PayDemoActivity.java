@@ -2,6 +2,8 @@ package com.mcgrady.demo;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +12,7 @@ import android.widget.Toast;
 import com.mcgrady.xpay.PayAPI;
 import com.mcgrady.xpay.alipay.AliPayReq;
 import com.mcgrady.xpay.interf.PayResultCallBack;
-import com.mcgrady.xpay.wxpay.WechatPayReq;
+import com.mcgrady.xpay.wxpay.WeChatPayReq;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
@@ -57,7 +59,7 @@ public class PayDemoActivity extends AppCompatActivity {
         });
 
 
-        WechatPayReq wechatPayReq = new WechatPayReq.Builder()
+        WeChatPayReq weChatPayReq = new WeChatPayReq.Builder()
                 .with(WXAPIFactory.createWXAPI(PayDemoActivity.this, null))
                 .appId("")
                 .partnerId("")
@@ -88,7 +90,7 @@ public class PayDemoActivity extends AppCompatActivity {
                 })
                 .create();
 
-        PayAPI.getInstance().pay(wechatPayReq);
+        PayAPI.getInstance().pay(weChatPayReq);
     }
 
     /**
@@ -111,6 +113,30 @@ public class PayDemoActivity extends AppCompatActivity {
                         Toast.makeText(PayDemoActivity.this, "无法获取支付宝 SDK 所需的权限, 请到系统设置开启", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    /**
+     * 将 H5 网页版支付转换成支付宝 App 支付的示例
+     */
+    public static void toAliH5Pay(Activity activity) {
+        Intent intent = new Intent(activity, H5PayDemoActivity.class);
+        Bundle extras = new Bundle();
+
+        /**
+         * URL 是要测试的网站，在 Demo App 中会使用 H5PayDemoActivity 内的 WebView 打开。
+         *
+         * 可以填写任一支持支付宝支付的网站（如淘宝或一号店），在网站中下订单并唤起支付宝；
+         * 或者直接填写由支付宝文档提供的“网站 Demo”生成的订单地址
+         * （如 https://mclient.alipay.com/h5Continue.htm?h5_route_token=303ff0894cd4dccf591b089761dexxxx）
+         * 进行测试。
+         *
+         * H5PayDemoActivity 中的 MyWebViewClient.shouldOverrideUrlLoading() 实现了拦截 URL 唤起支付宝，
+         * 可以参考它实现自定义的 URL 拦截逻辑。
+         */
+        String url = "https://m.taobao.com";
+        extras.putString("url", url);
+        intent.putExtras(extras);
+        activity.startActivity(intent);
     }
 
     private interface CallBack {

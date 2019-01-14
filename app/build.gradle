@@ -35,8 +35,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation project(':library')
-    //implementation 'com.tbruyelle.rxpermissions:rxpermissions:0.9.4@aar'
-    api ('com.github.tbruyelle:rxpermissions:0.10.2') {
+    implementation ('com.github.tbruyelle:rxpermissions:0.10.2') {
         exclude module: 'rxjava'
         exclude module: 'support-annotations'
     }
