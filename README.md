@@ -11,8 +11,9 @@ dependencies {
 	implementation 'com.mcgrady:xpay:1.0.1'
 	// or
 	implementation('com.mcgrady:xpay:1.0.1') {
-        exclude module: 'support-annotations'
-        exclude module: 'rxjava'
+        	exclude module: 'support-annotations'
+        	exclude module: 'rxjava'
+	}
     }
 }
 ```
