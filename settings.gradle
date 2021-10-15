@@ -1,1 +1,15 @@
-include ':app', ':library'
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+    }
+}
+rootProject.name = "PaySdk"
+include ':app'
+include ':pay-core'
+include ':pay-sdk-wechat'
